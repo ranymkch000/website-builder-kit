@@ -2,63 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 40 20% 97%;
-    --foreground: 220 15% 20%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
 
-    --card: 40 15% 99%;
-    --card-foreground: 220 15% 20%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 8%;
 
-    --popover: 40 15% 99%;
-    --popover-foreground: 220 15% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 160 18% 42%;
-    --primary-foreground: 40 20% 97%;
+    --primary: 0 0% 12%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 40 12% 92%;
-    --secondary-foreground: 220 15% 25%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 40 10% 93%;
-    --muted-foreground: 220 8% 50%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 42%;
 
-    --accent: 200 15% 50%;
-    --accent-foreground: 40 20% 97%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 12%;
 
-    --destructive: 4 50% 55%;
-    --destructive-foreground: 40 20% 97%;
+    --destructive: 0 0% 30%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 40 10% 89%;
-    --input: 40 10% 89%;
-    --ring: 160 18% 42%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 12%;
 
-    --radius: 0.625rem;
+    --radius: 0.5rem;
 
-    --warning: 35 55% 52%;
-    --warning-foreground: 40 20% 97%;
-    --success: 160 30% 40%;
-    --success-foreground: 40 20% 97%;
-    --risk-low: 160 30% 40%;
-    --risk-moderate: 35 55% 52%;
-    --risk-high: 4 50% 55%;
+    --warning: 0 0% 45%;
+    --warning-foreground: 0 0% 98%;
+    --success: 0 0% 35%;
+    --success-foreground: 0 0% 98%;
+    --risk-low: 0 0% 35%;
+    --risk-moderate: 0 0% 50%;
+    --risk-high: 0 0% 20%;
 
-    --sidebar-background: 220 15% 18%;
-    --sidebar-foreground: 40 10% 90%;
-    --sidebar-primary: 160 18% 50%;
-    --sidebar-primary-foreground: 40 20% 97%;
-    --sidebar-accent: 220 12% 24%;
-    --sidebar-accent-foreground: 40 10% 90%;
-    --sidebar-border: 220 12% 26%;
-    --sidebar-ring: 160 18% 42%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 80%;
+    --sidebar-primary-foreground: 0 0% 6%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 0 0% 50%;
 
-    --font-heading: 'DM Serif Display', serif;
-    --font-body: 'DM Sans', sans-serif;
+    --font-heading: 'IBM Plex Serif', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
   }
 }
 
@@ -68,6 +64,22 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

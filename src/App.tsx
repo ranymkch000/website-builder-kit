@@ -5,6 +5,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
 import Landing from "@/pages/Landing";
+import About from "@/pages/About";
+import WhatIsASD from "@/pages/WhatIsASD";
+import Resources from "@/pages/Resources";
 import Dashboard from "@/pages/Dashboard";
 import Patients from "@/pages/Patients";
 import Evaluation from "@/pages/Evaluation";
@@ -23,6 +26,9 @@ const App = () => (
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/what-is-asd" element={<WhatIsASD />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/patients" element={<Patients />} />
           <Route path="/evaluation" element={<Evaluation />} />

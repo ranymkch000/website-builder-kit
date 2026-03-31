@@ -13,8 +13,8 @@ export default {
       },
     },
     fontFamily: {
-      heading: ['DM Serif Display', 'serif'],
-      body: ['DM Sans', 'sans-serif'],
+      heading: ['IBM Plex Serif', 'serif'],
+      body: ['IBM Plex Sans', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -93,16 +93,11 @@ export default {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(199 89% 48% / 0.15)" },
-          "50%": { boxShadow: "0 0 30px hsl(199 89% 48% / 0.3)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out forwards",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
       },
     },
   },

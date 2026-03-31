@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Brain, LayoutDashboard, Users, ClipboardList, BarChart3, LogIn } from "lucide-react";
+import { Brain, LayoutDashboard, Users, ClipboardList, BarChart3, LogIn, Menu, X, Info, BookOpen, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
 const navItems = [
   { to: "/", label: "Home", icon: Brain },
+  { to: "/about", label: "About", icon: Info },
+  { to: "/what-is-asd", label: "What is ASD?", icon: HelpCircle },
+  { to: "/resources", label: "Resources", icon: BookOpen },
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/patients", label: "Patients", icon: Users },
   { to: "/evaluation", label: "Evaluation", icon: ClipboardList },
@@ -12,38 +17,74 @@ const navItems = [
 
 const Navbar = () => {
   const location = useLocation();
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
+    <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-            <Brain className="w-5 h-5 text-primary-foreground" />
+          <div className="w-8 h-8 rounded bg-foreground flex items-center justify-center">
+            <Brain className="w-4 h-4 text-background" />
           </div>
-          <span className="font-heading font-bold text-lg text-foreground">AutismCare AI</span>
+          <span className="font-heading font-semibold text-lg text-foreground tracking-tight">AutismCare AI</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-1">
-          {navItems.map(({ to, label, icon: Icon }) => (
+        <div className="hidden lg:flex items-center gap-1">
+          {navItems.map(({ to, label }) => (
             <Link key={to} to={to}>
               <Button
                 variant={location.pathname === to ? "default" : "ghost"}
                 size="sm"
-                className="gap-2"
+                className="text-sm"
               >
-                <Icon className="w-4 h-4" />
                 {label}
               </Button>
             </Link>
           ))}
         </div>
 
-        <Link to="/login">
-          <Button variant="outline" size="sm" className="gap-2">
-            <LogIn className="w-4 h-4" />
-            Login
-          </Button>
-        </Link>
+        <div className="hidden lg:block">
+          <Link to="/login">
+            <Button variant="outline" size="sm" className="gap-2">
+              <LogIn className="w-4 h-4" />
+              Login
+            </Button>
+          </Link>
+        </div>
+
+        {/* Mobile hamburger */}
+        <div className="lg:hidden">
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="sm" className="p-2">
+                <Menu className="w-5 h-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-72 bg-background">
+              <SheetTitle className="font-heading text-lg mb-6">Navigation</SheetTitle>
+              <div className="flex flex-col gap-1">
+                {navItems.map(({ to, label, icon: Icon }) => (
+                  <Link key={to} to={to} onClick={() => setOpen(false)}>
+                    <Button
+                      variant={location.pathname === to ? "default" : "ghost"}
+                      className="w-full justify-start gap-3"
+                    >
+                      <Icon className="w-4 h-4" />
+                      {label}
+                    </Button>
+                  </Link>
+                ))}
+                <div className="border-t border-border my-3" />
+                <Link to="/login" onClick={() => setOpen(false)}>
+                  <Button variant="outline" className="w-full justify-start gap-3">
+                    <LogIn className="w-4 h-4" />
+                    Login
+                  </Button>
+                </Link>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );
