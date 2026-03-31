@@ -6,59 +6,59 @@
 All colors MUST be HSL.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap');
 
 @layer base {
   :root {
-    --background: 210 33% 98%;
-    --foreground: 215 30% 12%;
+    --background: 40 20% 97%;
+    --foreground: 220 15% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 30% 12%;
+    --card: 40 15% 99%;
+    --card-foreground: 220 15% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 30% 12%;
+    --popover: 40 15% 99%;
+    --popover-foreground: 220 15% 20%;
 
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 160 18% 42%;
+    --primary-foreground: 40 20% 97%;
 
-    --secondary: 172 66% 50%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 40 12% 92%;
+    --secondary-foreground: 220 15% 25%;
 
-    --muted: 210 30% 94%;
-    --muted-foreground: 215 15% 47%;
+    --muted: 40 10% 93%;
+    --muted-foreground: 220 8% 50%;
 
-    --accent: 259 60% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 200 15% 50%;
+    --accent-foreground: 40 20% 97%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 4 50% 55%;
+    --destructive-foreground: 40 20% 97%;
 
-    --border: 214 25% 90%;
-    --input: 214 25% 90%;
-    --ring: 199 89% 48%;
+    --border: 40 10% 89%;
+    --input: 40 10% 89%;
+    --ring: 160 18% 42%;
 
-    --radius: 0.75rem;
+    --radius: 0.625rem;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-    --success: 152 69% 40%;
-    --success-foreground: 0 0% 100%;
-    --risk-low: 152 69% 40%;
-    --risk-moderate: 38 92% 50%;
-    --risk-high: 0 72% 51%;
+    --warning: 35 55% 52%;
+    --warning-foreground: 40 20% 97%;
+    --success: 160 30% 40%;
+    --success-foreground: 40 20% 97%;
+    --risk-low: 160 30% 40%;
+    --risk-moderate: 35 55% 52%;
+    --risk-high: 4 50% 55%;
 
-    --sidebar-background: 215 30% 12%;
-    --sidebar-foreground: 210 30% 94%;
-    --sidebar-primary: 199 89% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 215 25% 18%;
-    --sidebar-accent-foreground: 210 30% 94%;
-    --sidebar-border: 215 25% 20%;
-    --sidebar-ring: 199 89% 48%;
+    --sidebar-background: 220 15% 18%;
+    --sidebar-foreground: 40 10% 90%;
+    --sidebar-primary: 160 18% 50%;
+    --sidebar-primary-foreground: 40 20% 97%;
+    --sidebar-accent: 220 12% 24%;
+    --sidebar-accent-foreground: 40 10% 90%;
+    --sidebar-border: 220 12% 26%;
+    --sidebar-ring: 160 18% 42%;
 
-    --font-heading: 'Plus Jakarta Sans', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
   }
 }
 

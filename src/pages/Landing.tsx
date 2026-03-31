@@ -43,7 +43,7 @@ const Landing = () => (
             <p className="text-xs text-muted-foreground">⚠️ Decision-support tool only — does not replace medical diagnosis.</p>
           </div>
           <div className="animate-fade-in [animation-delay:200ms] opacity-0">
-            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 animate-pulse-glow">
+            <div className="rounded-2xl overflow-hidden shadow-xl shadow-foreground/5">
               <img src={heroBrain} alt="AI brain analysis visualization" className="w-full" />
             </div>
           </div>
