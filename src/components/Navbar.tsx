@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Brain, LayoutDashboard, Users, ClipboardList, BarChart3, LogIn, Menu, X, Info, BookOpen, HelpCircle } from "lucide-react";
+import { Brain, LayoutDashboard, ClipboardList, BarChart3, LogIn, Menu, Info, BookOpen, HelpCircle, LineChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
@@ -10,9 +10,9 @@ const navItems = [
   { to: "/what-is-asd", label: "What is ASD?", icon: HelpCircle },
   { to: "/resources", label: "Resources", icon: BookOpen },
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/patients", label: "Patients", icon: Users },
   { to: "/evaluation", label: "Evaluation", icon: ClipboardList },
   { to: "/results", label: "Results", icon: BarChart3 },
+  { to: "/model-performance", label: "Model", icon: LineChart },
 ];
 
 const Navbar = () => {
@@ -26,10 +26,11 @@ const Navbar = () => {
           <div className="w-8 h-8 rounded bg-foreground flex items-center justify-center">
             <Brain className="w-4 h-4 text-background" />
           </div>
-          <span className="font-heading font-semibold text-lg text-foreground tracking-tight">AutismCare AI</span>
+          <span className="font-heading font-semibold text-lg text-foreground tracking-tight">Autivision</span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-1">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-1">
           {navItems.map(({ to, label }) => (
             <Link key={to} to={to}>
               <Button
@@ -43,7 +44,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden md:block">
           <Link to="/login">
             <Button variant="outline" size="sm" className="gap-2">
               <LogIn className="w-4 h-4" />
@@ -53,7 +54,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile hamburger */}
-        <div className="lg:hidden">
+        <div className="md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="sm" className="p-2">
