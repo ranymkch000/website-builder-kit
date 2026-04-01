@@ -35,6 +35,8 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/model-performance" element={<ModelPerformance />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
