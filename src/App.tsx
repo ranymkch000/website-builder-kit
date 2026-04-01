@@ -13,6 +13,7 @@ import Evaluation from "@/pages/Evaluation";
 import Results from "@/pages/Results";
 import ModelPerformance from "@/pages/ModelPerformance";
 import Login from "@/pages/Login";
+import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
