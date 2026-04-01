@@ -13,6 +13,7 @@ import Evaluation from "@/pages/Evaluation";
 import Results from "@/pages/Results";
 import ModelPerformance from "@/pages/ModelPerformance";
 import Login from "@/pages/Login";
+import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,8 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/model-performance" element={<ModelPerformance />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
