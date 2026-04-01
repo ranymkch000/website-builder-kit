@@ -9,9 +9,9 @@ import About from "@/pages/About";
 import WhatIsASD from "@/pages/WhatIsASD";
 import Resources from "@/pages/Resources";
 import Dashboard from "@/pages/Dashboard";
-import Patients from "@/pages/Patients";
 import Evaluation from "@/pages/Evaluation";
 import Results from "@/pages/Results";
+import ModelPerformance from "@/pages/ModelPerformance";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
 
@@ -30,9 +30,9 @@ const App = () => (
           <Route path="/what-is-asd" element={<WhatIsASD />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/patients" element={<Patients />} />
           <Route path="/evaluation" element={<Evaluation />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/model-performance" element={<ModelPerformance />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
