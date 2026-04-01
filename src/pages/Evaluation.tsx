@@ -1,137 +1,101 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowRight, ArrowLeft, Send } from "lucide-react";
-
-const questions = [
-  "Does the child respond to their name when called?",
-  "Does the child make eye contact during interaction?",
-  "Does the child point to objects to show interest?",
-  "Does the child engage in pretend play?",
-  "Does the child show interest in other children?",
-  "Does the child bring objects to show to caregivers?",
-  "Does the child respond to social smiling?",
-  "Does the child use gestures (waving, nodding)?",
-  "Does the child show unusual repetitive movements?",
-  "Does the child have difficulty with changes in routine?",
-];
+import { Upload, ImageIcon, X, Send } from "lucide-react";
 
 const Evaluation = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0);
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [image, setImage] = useState<string | null>(null);
+  const [fileName, setFileName] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleAnswer = (qIdx: number, value: string) => {
-    setAnswers((prev) => ({ ...prev, [qIdx]: value }));
+  const handleFile = (file: File) => {
+    if (!file.type.startsWith("image/")) return;
+    setFileName(file.name);
+    const reader = new FileReader();
+    reader.onload = (e) => setImage(e.target?.result as string);
+    reader.readAsDataURL(file);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
   };
 
   const handleSubmit = () => {
-    const yesCount = Object.values(answers).filter((a) => a === "yes").length;
-    const risk = yesCount >= 7 ? "low" : yesCount >= 4 ? "moderate" : "high";
-    const confidence = 70 + Math.floor(Math.random() * 25);
-    navigate("/results", { state: { risk, confidence, answers, age, gender } });
+    if (!image) return;
+    // Simulate AI model prediction
+    const score = Math.floor(Math.random() * 40) + 40; // 40-80
+    const confidence = Math.floor(Math.random() * 20) + 75; // 75-95
+    navigate("/results", { state: { score, confidence, imageName: fileName } });
   };
-
-  const currentQs = questions.slice(step * 5, step * 5 + 5);
-  const canProceed = step === 0 ? age && gender : currentQs.every((_, i) => answers[step * 5 + i]);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <h1 className="font-heading text-3xl font-bold text-foreground">ASD Screening Evaluation</h1>
-      <p className="text-muted-foreground mt-1 mb-8">Complete the behavioral assessment questionnaire</p>
+      <h1 className="font-heading text-3xl font-bold text-foreground">ASD Screening</h1>
+      <p className="text-muted-foreground mt-1 mb-8">Upload an image for AI-based autism spectrum analysis</p>
 
-      {/* Progress */}
-      <div className="flex gap-2 mb-8">
-        {[0, 1, 2].map((s) => (
-          <div key={s} className={`h-2 flex-1 rounded-full transition-colors ${s <= step ? "bg-primary" : "bg-muted"}`} />
-        ))}
-      </div>
-
-      {step === 0 && (
-        <Card className="animate-fade-in">
-          <CardHeader>
-            <CardTitle className="font-heading">Patient Information</CardTitle>
-            <CardDescription>Basic demographics for the screening</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <Label>Age (years)</Label>
-              <Select value={age} onValueChange={setAge}>
-                <SelectTrigger className="mt-1"><SelectValue placeholder="Select age" /></SelectTrigger>
-                <SelectContent>
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map((a) => (
-                    <SelectItem key={a} value={String(a)}>{a} years</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+      <Card className="animate-fade-in">
+        <CardHeader>
+          <CardTitle className="font-heading">Image Upload</CardTitle>
+          <CardDescription>Provide a facial image for the AI model to analyze</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {!image ? (
+            <div
+              className={`border-2 border-dashed rounded-lg p-12 text-center cursor-pointer transition-colors ${
+                isDragging ? "border-foreground bg-muted" : "border-border hover:border-foreground/40"
+              }`}
+              onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+              onDragLeave={() => setIsDragging(false)}
+              onDrop={handleDrop}
+              onClick={() => inputRef.current?.click()}
+            >
+              <Upload className="w-10 h-10 mx-auto text-muted-foreground mb-4" />
+              <p className="text-foreground font-medium mb-1">Drop image here or click to browse</p>
+              <p className="text-sm text-muted-foreground">Supports JPG, PNG, WEBP</p>
+              <input
+                ref={inputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) handleFile(file);
+                }}
+              />
             </div>
-            <div>
-              <Label>Gender</Label>
-              <Select value={gender} onValueChange={setGender}>
-                <SelectTrigger className="mt-1"><SelectValue placeholder="Select gender" /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="male">Male</SelectItem>
-                  <SelectItem value="female">Female</SelectItem>
-                </SelectContent>
-              </Select>
+          ) : (
+            <div className="space-y-4">
+              <div className="relative rounded-lg overflow-hidden border border-border">
+                <img src={image} alt="Uploaded" className="w-full max-h-96 object-contain bg-muted" />
+                <button
+                  onClick={() => { setImage(null); setFileName(""); }}
+                  className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/80 backdrop-blur flex items-center justify-center hover:bg-background transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <ImageIcon className="w-4 h-4" />
+                <span>{fileName}</span>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-      )}
+          )}
 
-      {step > 0 && (
-        <Card className="animate-fade-in">
-          <CardHeader>
-            <CardTitle className="font-heading">Behavioral Questions — Part {step}</CardTitle>
-            <CardDescription>Observe the child's behavior and answer accordingly</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {currentQs.map((q, i) => {
-              const idx = step * 5 + i;
-              return (
-                <div key={idx} className="space-y-2">
-                  <Label className="text-sm font-medium">{idx + 1}. {q}</Label>
-                  <RadioGroup value={answers[idx] || ""} onValueChange={(v) => handleAnswer(idx, v)} className="flex gap-4">
-                    <div className="flex items-center gap-2">
-                      <RadioGroupItem value="yes" id={`q${idx}-yes`} />
-                      <Label htmlFor={`q${idx}-yes`} className="cursor-pointer">Yes</Label>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <RadioGroupItem value="no" id={`q${idx}-no`} />
-                      <Label htmlFor={`q${idx}-no`} className="cursor-pointer">No</Label>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <RadioGroupItem value="sometimes" id={`q${idx}-sometimes`} />
-                      <Label htmlFor={`q${idx}-sometimes`} className="cursor-pointer">Sometimes</Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-              );
-            })}
-          </CardContent>
-        </Card>
-      )}
+          <Button onClick={handleSubmit} disabled={!image} className="w-full gap-2" size="lg">
+            <Send className="w-4 h-4" /> Analyze Image
+          </Button>
+        </CardContent>
+      </Card>
 
-      <div className="flex justify-between mt-6">
-        <Button variant="outline" onClick={() => setStep((s) => s - 1)} disabled={step === 0} className="gap-2">
-          <ArrowLeft className="w-4 h-4" /> Back
-        </Button>
-        {step < 2 ? (
-          <Button onClick={() => setStep((s) => s + 1)} disabled={!canProceed} className="gap-2">
-            Next <ArrowRight className="w-4 h-4" />
-          </Button>
-        ) : (
-          <Button onClick={handleSubmit} disabled={!canProceed} className="gap-2">
-            Submit <Send className="w-4 h-4" />
-          </Button>
-        )}
-      </div>
+      <p className="text-center text-xs text-muted-foreground mt-6">
+        ⚠️ This is a decision-support tool and does not constitute a medical diagnosis.
+      </p>
     </div>
   );
 };
