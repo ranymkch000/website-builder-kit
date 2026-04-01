@@ -3,8 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, FileText, Brain } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Results = () => {
+  useScrollReveal();
   const location = useLocation();
   const { score = 55, confidence = 82, imageName = "image.jpg" } = (location.state as { score?: number; confidence?: number; imageName?: string }) || {};
 
