@@ -17,7 +17,7 @@ const Dashboard = () => {
   return (
   <div className="container mx-auto px-4 py-8 space-y-8">
     <div>
-      <h1 className="font-heading text-3xl font-bold text-foreground">Dashboard</h1>
+      <h1 className="font-heading text-3xl font-bold text-foreground animate-fade-in">Dashboard</h1>
       <p className="text-muted-foreground mt-1">Overview of screening activity</p>
     </div>
 
