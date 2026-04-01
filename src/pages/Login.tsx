@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Brain, LogIn } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Login = () => {
+  useScrollReveal();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
