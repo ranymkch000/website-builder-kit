@@ -2,6 +2,7 @@ import { Users, ClipboardList, AlertTriangle, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StatCard from "@/components/StatCard";
 import RiskBadge from "@/components/RiskBadge";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const recentEvals = [
   { patient: "Patient #1042", age: 4, date: "Mar 28, 2026", risk: "low" as const, confidence: 92 },
@@ -11,7 +12,9 @@ const recentEvals = [
   { patient: "Patient #1038", age: 4, date: "Mar 24, 2026", risk: "high" as const, confidence: 84 },
 ];
 
-const Dashboard = () => (
+const Dashboard = () => {
+  useScrollReveal();
+  return (
   <div className="container mx-auto px-4 py-8 space-y-8">
     <div>
       <h1 className="font-heading text-3xl font-bold text-foreground">Dashboard</h1>
