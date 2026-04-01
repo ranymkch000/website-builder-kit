@@ -28,7 +28,7 @@ const Dashboard = () => {
       <StatCard icon={CheckCircle} title="Low Risk" value={156} subtitle="63% of total" iconClassName="bg-success/10 text-success" />
     </div>
 
-    <Card>
+    <Card className="scroll-reveal">
       <CardHeader>
         <CardTitle className="font-heading">Recent Evaluations</CardTitle>
       </CardHeader>
