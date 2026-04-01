@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Upload, ImageIcon, X, Send } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Evaluation = () => {
+  useScrollReveal();
   const navigate = useNavigate();
   const [image, setImage] = useState<string | null>(null);
   const [fileName, setFileName] = useState("");
