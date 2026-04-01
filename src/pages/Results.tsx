@@ -62,7 +62,7 @@ const Results = () => {
         </CardContent>
       </Card>
 
-      <div className="flex justify-center gap-3 pt-4">
+      <div className="flex justify-center gap-3 pt-4 scroll-reveal">
         <Button variant="outline" className="gap-2"><FileText className="w-4 h-4" /> Download Report</Button>
         <Link to="/model-performance"><Button variant="outline" className="gap-2">View Model Metrics</Button></Link>
         <Link to="/dashboard"><Button className="gap-2">Back to Dashboard</Button></Link>

@@ -60,6 +60,7 @@ const Dashboard = () => {
       </CardContent>
     </Card>
   </div>
-);
+  );
+};
 
 export default Dashboard;

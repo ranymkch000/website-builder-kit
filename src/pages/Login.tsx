@@ -14,7 +14,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
-      <Card className="w-full max-w-md animate-fade-in">
+      <Card className="w-full max-w-md scroll-reveal">
         <CardHeader className="text-center space-y-3">
           <div className="w-14 h-14 mx-auto rounded-xl bg-primary flex items-center justify-center">
             <Brain className="w-7 h-7 text-primary-foreground" />
