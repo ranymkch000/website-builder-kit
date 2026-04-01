@@ -46,7 +46,7 @@ const Results = () => {
         </CardContent>
       </Card>
 
-      <Card className="animate-fade-in [animation-delay:300ms] opacity-0">
+      <Card className="scroll-reveal">
         <CardHeader>
           <CardTitle className="font-heading">Confidence Score</CardTitle>
         </CardHeader>
