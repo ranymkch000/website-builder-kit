@@ -3,8 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, FileText, Brain } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Results = () => {
+  useScrollReveal();
   const location = useLocation();
   const { score = 55, confidence = 82, imageName = "image.jpg" } = (location.state as { score?: number; confidence?: number; imageName?: string }) || {};
 
@@ -26,7 +28,7 @@ const Results = () => {
         <p className="text-muted-foreground text-sm">Analysis for: {imageName}</p>
       </div>
 
-      <Card className="animate-fade-in [animation-delay:150ms] opacity-0">
+      <Card className="scroll-reveal">
         <CardHeader>
           <CardTitle className="font-heading">ASD Score</CardTitle>
         </CardHeader>
@@ -44,7 +46,7 @@ const Results = () => {
         </CardContent>
       </Card>
 
-      <Card className="animate-fade-in [animation-delay:300ms] opacity-0">
+      <Card className="scroll-reveal">
         <CardHeader>
           <CardTitle className="font-heading">Confidence Score</CardTitle>
         </CardHeader>
@@ -60,7 +62,7 @@ const Results = () => {
         </CardContent>
       </Card>
 
-      <div className="flex justify-center gap-3 pt-4">
+      <div className="flex justify-center gap-3 pt-4 scroll-reveal">
         <Button variant="outline" className="gap-2"><FileText className="w-4 h-4" /> Download Report</Button>
         <Link to="/model-performance"><Button variant="outline" className="gap-2">View Model Metrics</Button></Link>
         <Link to="/dashboard"><Button className="gap-2">Back to Dashboard</Button></Link>

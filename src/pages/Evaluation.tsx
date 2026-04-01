@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Upload, ImageIcon, X, Send } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const Evaluation = () => {
+  useScrollReveal();
   const navigate = useNavigate();
   const [image, setImage] = useState<string | null>(null);
   const [fileName, setFileName] = useState("");
@@ -36,10 +38,12 @@ const Evaluation = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <h1 className="font-heading text-3xl font-bold text-foreground">ASD Screening</h1>
-      <p className="text-muted-foreground mt-1 mb-8">Upload an image for AI-based autism spectrum analysis</p>
+      <div className="animate-fade-in">
+        <h1 className="font-heading text-3xl font-bold text-foreground">ASD Screening</h1>
+        <p className="text-muted-foreground mt-1 mb-8">Upload an image for AI-based autism spectrum analysis</p>
+      </div>
 
-      <Card className="animate-fade-in">
+      <Card className="scroll-reveal">
         <CardHeader>
           <CardTitle className="font-heading">Image Upload</CardTitle>
           <CardDescription>Provide a facial image for the AI model to analyze</CardDescription>

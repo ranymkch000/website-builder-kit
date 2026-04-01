@@ -2,6 +2,7 @@ import { Users, ClipboardList, AlertTriangle, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StatCard from "@/components/StatCard";
 import RiskBadge from "@/components/RiskBadge";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const recentEvals = [
   { patient: "Patient #1042", age: 4, date: "Mar 28, 2026", risk: "low" as const, confidence: 92 },
@@ -11,21 +12,23 @@ const recentEvals = [
   { patient: "Patient #1038", age: 4, date: "Mar 24, 2026", risk: "high" as const, confidence: 84 },
 ];
 
-const Dashboard = () => (
+const Dashboard = () => {
+  useScrollReveal();
+  return (
   <div className="container mx-auto px-4 py-8 space-y-8">
     <div>
-      <h1 className="font-heading text-3xl font-bold text-foreground">Dashboard</h1>
+      <h1 className="font-heading text-3xl font-bold text-foreground animate-fade-in">Dashboard</h1>
       <p className="text-muted-foreground mt-1">Overview of screening activity</p>
     </div>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 scroll-reveal">
       <StatCard icon={Users} title="Total Patients" value={248} subtitle="+12 this month" />
       <StatCard icon={ClipboardList} title="Evaluations" value={1024} subtitle="+38 this week" iconClassName="bg-secondary/10 text-secondary" />
       <StatCard icon={AlertTriangle} title="High Risk" value={42} subtitle="17% of total" iconClassName="bg-destructive/10 text-destructive" />
       <StatCard icon={CheckCircle} title="Low Risk" value={156} subtitle="63% of total" iconClassName="bg-success/10 text-success" />
     </div>
 
-    <Card>
+    <Card className="scroll-reveal">
       <CardHeader>
         <CardTitle className="font-heading">Recent Evaluations</CardTitle>
       </CardHeader>
@@ -57,6 +60,7 @@ const Dashboard = () => (
       </CardContent>
     </Card>
   </div>
-);
+  );
+};
 
 export default Dashboard;
