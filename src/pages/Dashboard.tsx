@@ -21,7 +21,7 @@ const Dashboard = () => {
       <p className="text-muted-foreground mt-1">Overview of screening activity</p>
     </div>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 scroll-reveal">
       <StatCard icon={Users} title="Total Patients" value={248} subtitle="+12 this month" />
       <StatCard icon={ClipboardList} title="Evaluations" value={1024} subtitle="+38 this week" iconClassName="bg-secondary/10 text-secondary" />
       <StatCard icon={AlertTriangle} title="High Risk" value={42} subtitle="17% of total" iconClassName="bg-destructive/10 text-destructive" />
