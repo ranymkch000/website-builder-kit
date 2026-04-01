@@ -28,7 +28,7 @@ const Results = () => {
         <p className="text-muted-foreground text-sm">Analysis for: {imageName}</p>
       </div>
 
-      <Card className="animate-fade-in [animation-delay:150ms] opacity-0">
+      <Card className="scroll-reveal">
         <CardHeader>
           <CardTitle className="font-heading">ASD Score</CardTitle>
         </CardHeader>
