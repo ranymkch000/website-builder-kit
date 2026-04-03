@@ -13,8 +13,8 @@ export default {
       },
     },
     fontFamily: {
-      heading: ['DM Serif Display', 'serif'],
-      body: ['Inter', 'sans-serif'],
+      heading: ['Poppins', 'sans-serif'],
+      body: ['Open Sans', 'sans-serif'],
     },
     extend: {
       colors: {
