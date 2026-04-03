@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Upload, ImageIcon, X, Send } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -30,74 +29,75 @@ const Evaluation = () => {
 
   const handleSubmit = () => {
     if (!image) return;
-    // Simulate AI model prediction
-    const score = Math.floor(Math.random() * 40) + 40; // 40-80
-    const confidence = Math.floor(Math.random() * 20) + 75; // 75-95
+    const score = Math.floor(Math.random() * 40) + 40;
+    const confidence = Math.floor(Math.random() * 20) + 75;
     navigate("/results", { state: { score, confidence, imageName: fileName } });
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <div className="animate-fade-in">
-        <h1 className="font-heading text-3xl font-bold text-foreground">ASD Screening</h1>
-        <p className="text-muted-foreground mt-1 mb-8">Upload an image for AI-based autism spectrum analysis</p>
+    <div className="container mx-auto px-4 py-20 max-w-2xl">
+      <div className="animate-fade-in mb-10">
+        <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-3">Evaluate</p>
+        <h1 className="font-heading text-3xl md:text-4xl text-foreground">ASD Screening</h1>
+        <p className="text-muted-foreground mt-2 text-lg">Upload an image for AI-based autism spectrum analysis</p>
       </div>
 
-      <Card className="scroll-reveal">
-        <CardHeader>
-          <CardTitle className="font-heading">Image Upload</CardTitle>
-          <CardDescription>Provide a facial image for the AI model to analyze</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {!image ? (
-            <div
-              className={`border-2 border-dashed rounded-lg p-12 text-center cursor-pointer transition-colors ${
-                isDragging ? "border-foreground bg-muted" : "border-border hover:border-foreground/40"
-              }`}
-              onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
-              onDragLeave={() => setIsDragging(false)}
-              onDrop={handleDrop}
-              onClick={() => inputRef.current?.click()}
-            >
-              <Upload className="w-10 h-10 mx-auto text-muted-foreground mb-4" />
-              <p className="text-foreground font-medium mb-1">Drop image here or click to browse</p>
-              <p className="text-sm text-muted-foreground">Supports JPG, PNG, WEBP</p>
-              <input
-                ref={inputRef}
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) handleFile(file);
-                }}
-              />
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <div className="relative rounded-lg overflow-hidden border border-border">
-                <img src={image} alt="Uploaded" className="w-full max-h-96 object-contain bg-muted" />
-                <button
-                  onClick={() => { setImage(null); setFileName(""); }}
-                  className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/80 backdrop-blur flex items-center justify-center hover:bg-background transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <ImageIcon className="w-4 h-4" />
-                <span>{fileName}</span>
-              </div>
-            </div>
-          )}
+      <div className="modern-card rounded-2xl p-8 space-y-6 scroll-reveal">
+        <div>
+          <h2 className="font-heading text-xl text-foreground">Image Upload</h2>
+          <p className="text-sm text-muted-foreground mt-1">Provide a facial image for the AI model to analyze</p>
+        </div>
 
-          <Button onClick={handleSubmit} disabled={!image} className="w-full gap-2" size="lg">
-            <Send className="w-4 h-4" /> Analyze Image
-          </Button>
-        </CardContent>
-      </Card>
+        {!image ? (
+          <div
+            className={`border-2 border-dashed rounded-2xl p-14 text-center cursor-pointer transition-all ${
+              isDragging ? "border-foreground bg-muted/50 scale-[1.01]" : "border-border hover:border-foreground/30 hover:bg-muted/30"
+            }`}
+            onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
+            onDragLeave={() => setIsDragging(false)}
+            onDrop={handleDrop}
+            onClick={() => inputRef.current?.click()}
+          >
+            <div className="w-14 h-14 rounded-2xl bg-muted mx-auto mb-5 flex items-center justify-center">
+              <Upload className="w-6 h-6 text-muted-foreground" />
+            </div>
+            <p className="text-foreground font-medium mb-1">Drop image here or click to browse</p>
+            <p className="text-sm text-muted-foreground">Supports JPG, PNG, WEBP</p>
+            <input
+              ref={inputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) handleFile(file);
+              }}
+            />
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="relative rounded-2xl overflow-hidden border border-border">
+              <img src={image} alt="Uploaded" className="w-full max-h-96 object-contain bg-muted" />
+              <button
+                onClick={() => { setImage(null); setFileName(""); }}
+                className="absolute top-3 right-3 w-9 h-9 rounded-xl bg-background/80 backdrop-blur flex items-center justify-center hover:bg-background transition-colors shadow-sm"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <ImageIcon className="w-4 h-4" />
+              <span>{fileName}</span>
+            </div>
+          </div>
+        )}
 
-      <p className="text-center text-xs text-muted-foreground mt-6">
+        <Button onClick={handleSubmit} disabled={!image} className="w-full gap-2 rounded-xl h-12 text-sm font-semibold" size="lg">
+          <Send className="w-4 h-4" /> Analyze Image
+        </Button>
+      </div>
+
+      <p className="text-center text-xs text-muted-foreground mt-8">
         ⚠️ This is a decision-support tool and does not constitute a medical diagnosis.
       </p>
     </div>

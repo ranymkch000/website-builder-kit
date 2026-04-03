@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const confusionMatrix = {
@@ -38,72 +37,64 @@ const ModelPerformance = () => {
   const chartH = 220;
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-5xl space-y-8">
-      <div>
-        <h1 className="font-heading text-3xl font-bold text-foreground">Model Performance</h1>
-        <p className="text-muted-foreground mt-1">Evaluation metrics, confusion matrix, and diagnostic curves</p>
+    <div className="container mx-auto px-4 py-20 max-w-5xl space-y-10">
+      <div className="animate-fade-in">
+        <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-3">Analytics</p>
+        <h1 className="font-heading text-3xl md:text-4xl text-foreground">Model Performance</h1>
+        <p className="text-muted-foreground mt-2 text-lg">Evaluation metrics, confusion matrix, and diagnostic curves</p>
       </div>
 
       {/* Metrics grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 scroll-reveal">
         {metrics.map((m) => (
-          <Card key={m.label}>
-            <CardContent className="p-5">
-              <p className="text-sm text-muted-foreground">{m.label}</p>
-              <p className="text-3xl font-bold font-heading text-foreground mt-1">{m.value}</p>
-              <p className="text-xs text-muted-foreground mt-1">{m.desc}</p>
-            </CardContent>
-          </Card>
+          <div key={m.label} className="modern-card rounded-2xl p-6">
+            <p className="text-sm text-muted-foreground">{m.label}</p>
+            <p className="text-3xl font-bold font-heading text-foreground mt-2">{m.value}</p>
+            <p className="text-xs text-muted-foreground mt-1">{m.desc}</p>
+          </div>
         ))}
       </div>
 
       {/* Confusion Matrix */}
-      <Card className="scroll-reveal">
-        <CardHeader>
-          <CardTitle className="font-heading">Confusion Matrix</CardTitle>
-          <CardDescription>Prediction vs. actual classification on the test set (n=300)</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="max-w-sm mx-auto">
-            <div className="grid grid-cols-3 text-center text-sm">
-              <div />
-              <div className="py-2 font-semibold text-foreground">Predicted ASD</div>
-              <div className="py-2 font-semibold text-foreground">Predicted Non-ASD</div>
+      <div className="modern-card rounded-2xl p-8 scroll-reveal">
+        <h2 className="font-heading text-xl text-foreground">Confusion Matrix</h2>
+        <p className="text-sm text-muted-foreground mt-1 mb-6">Prediction vs. actual classification on the test set (n=300)</p>
+        <div className="max-w-sm mx-auto">
+          <div className="grid grid-cols-3 text-center text-sm">
+            <div />
+            <div className="py-2 font-semibold text-foreground">Predicted ASD</div>
+            <div className="py-2 font-semibold text-foreground">Predicted Non-ASD</div>
 
-              <div className="py-4 font-semibold text-foreground flex items-center justify-center">Actual ASD</div>
-              <div className="py-4 bg-foreground text-background font-bold text-2xl rounded-tl-lg border border-border">
-                {confusionMatrix.tp}
-                <p className="text-xs font-normal opacity-70">TP</p>
-              </div>
-              <div className="py-4 bg-muted text-foreground font-bold text-2xl rounded-tr-lg border border-border">
-                {confusionMatrix.fn}
-                <p className="text-xs font-normal text-muted-foreground">FN</p>
-              </div>
+            <div className="py-4 font-semibold text-foreground flex items-center justify-center">Actual ASD</div>
+            <div className="py-4 bg-foreground text-background font-bold text-2xl rounded-tl-xl border border-border">
+              {confusionMatrix.tp}
+              <p className="text-xs font-normal opacity-70">TP</p>
+            </div>
+            <div className="py-4 bg-muted text-foreground font-bold text-2xl rounded-tr-xl border border-border">
+              {confusionMatrix.fn}
+              <p className="text-xs font-normal text-muted-foreground">FN</p>
+            </div>
 
-              <div className="py-4 font-semibold text-foreground flex items-center justify-center">Actual Non-ASD</div>
-              <div className="py-4 bg-muted text-foreground font-bold text-2xl rounded-bl-lg border border-border">
-                {confusionMatrix.fp}
-                <p className="text-xs font-normal text-muted-foreground">FP</p>
-              </div>
-              <div className="py-4 bg-foreground text-background font-bold text-2xl rounded-br-lg border border-border">
-                {confusionMatrix.tn}
-                <p className="text-xs font-normal opacity-70">TN</p>
-              </div>
+            <div className="py-4 font-semibold text-foreground flex items-center justify-center">Actual Non-ASD</div>
+            <div className="py-4 bg-muted text-foreground font-bold text-2xl rounded-bl-xl border border-border">
+              {confusionMatrix.fp}
+              <p className="text-xs font-normal text-muted-foreground">FP</p>
+            </div>
+            <div className="py-4 bg-foreground text-background font-bold text-2xl rounded-br-xl border border-border">
+              {confusionMatrix.tn}
+              <p className="text-xs font-normal opacity-70">TN</p>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Curves */}
       <div className="grid md:grid-cols-2 gap-6">
-        <Card className="scroll-reveal">
-          <CardHeader>
-            <CardTitle className="font-heading text-lg">ROC Curve</CardTitle>
-            <CardDescription>AUC = 0.943</CardDescription>
-          </CardHeader>
-          <CardContent className="flex justify-center">
+        <div className="modern-card rounded-2xl p-6 scroll-reveal">
+          <h3 className="font-heading text-lg text-foreground">ROC Curve</h3>
+          <p className="text-sm text-muted-foreground mb-4">AUC = 0.943</p>
+          <div className="flex justify-center">
             <svg viewBox={`-30 -10 ${chartW + 50} ${chartH + 40}`} className="w-full max-w-xs">
-              {/* Grid */}
               {[0, 0.25, 0.5, 0.75, 1].map((v) => (
                 <g key={v}>
                   <line x1={0} y1={(1 - v) * chartH} x2={chartW} y2={(1 - v) * chartH} stroke="currentColor" className="text-border" strokeWidth="0.5" />
@@ -112,23 +103,18 @@ const ModelPerformance = () => {
                   <text x={v * chartW} y={chartH + 14} textAnchor="middle" className="text-muted-foreground fill-current" fontSize="9">{v.toFixed(1)}</text>
                 </g>
               ))}
-              {/* Diagonal */}
               <line x1={0} y1={chartH} x2={chartW} y2={0} stroke="currentColor" className="text-muted-foreground/30" strokeWidth="1" strokeDasharray="4 4" />
-              {/* Curve */}
-              <path d={toSvgPath(rocPoints, chartW, chartH)} fill="none" stroke="currentColor" className="text-foreground" strokeWidth="2.5" />
-              {/* Labels */}
+              <path d={toSvgPath(rocPoints, chartW, chartH)} fill="none" stroke="currentColor" className="text-foreground" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
               <text x={chartW / 2} y={chartH + 30} textAnchor="middle" className="text-muted-foreground fill-current" fontSize="10">False Positive Rate</text>
               <text x={-25} y={chartH / 2} textAnchor="middle" className="text-muted-foreground fill-current" fontSize="10" transform={`rotate(-90, -25, ${chartH / 2})`}>True Positive Rate</text>
             </svg>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        <Card className="scroll-reveal">
-          <CardHeader>
-            <CardTitle className="font-heading text-lg">Precision-Recall Curve</CardTitle>
-            <CardDescription>Average Precision = 0.891</CardDescription>
-          </CardHeader>
-          <CardContent className="flex justify-center">
+        <div className="modern-card rounded-2xl p-6 scroll-reveal">
+          <h3 className="font-heading text-lg text-foreground">Precision-Recall Curve</h3>
+          <p className="text-sm text-muted-foreground mb-4">Average Precision = 0.891</p>
+          <div className="flex justify-center">
             <svg viewBox={`-30 -10 ${chartW + 50} ${chartH + 40}`} className="w-full max-w-xs">
               {[0, 0.25, 0.5, 0.75, 1].map((v) => (
                 <g key={v}>
@@ -138,12 +124,12 @@ const ModelPerformance = () => {
                   <text x={v * chartW} y={chartH + 14} textAnchor="middle" className="text-muted-foreground fill-current" fontSize="9">{v.toFixed(1)}</text>
                 </g>
               ))}
-              <path d={toSvgPath(prPoints, chartW, chartH)} fill="none" stroke="currentColor" className="text-foreground" strokeWidth="2.5" />
+              <path d={toSvgPath(prPoints, chartW, chartH)} fill="none" stroke="currentColor" className="text-foreground" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
               <text x={chartW / 2} y={chartH + 30} textAnchor="middle" className="text-muted-foreground fill-current" fontSize="10">Recall</text>
               <text x={-25} y={chartH / 2} textAnchor="middle" className="text-muted-foreground fill-current" fontSize="10" transform={`rotate(-90, -25, ${chartH / 2})`}>Precision</text>
             </svg>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
 
       <p className="text-center text-xs text-muted-foreground">

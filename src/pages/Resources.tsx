@@ -39,31 +39,31 @@ const Resources = () => {
   useScrollReveal();
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-3xl space-y-12">
+    <div className="container mx-auto px-4 py-20 max-w-3xl space-y-14">
       <div className="animate-fade-in">
-        <h1 className="font-heading text-4xl font-bold text-foreground tracking-tight">Resources</h1>
-        <p className="text-muted-foreground mt-3">Curated references for clinicians and researchers working with ASD.</p>
-        <div className="w-16 h-0.5 bg-foreground mt-4" />
+        <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase mb-3">Reference</p>
+        <h1 className="font-heading text-4xl md:text-5xl text-foreground tracking-tight">Resources</h1>
+        <p className="text-lg text-muted-foreground mt-4">Curated references for clinicians and researchers working with ASD.</p>
       </div>
 
       {resources.map((section, si) => (
         <div key={si} className="space-y-4 scroll-reveal">
-          <h2 className="font-heading text-2xl font-bold text-foreground">{section.category}</h2>
-          <div className="space-y-3">
+          <h2 className="font-heading text-2xl text-foreground">{section.category}</h2>
+          <div className="grid gap-3">
             {section.items.map((item, ii) => (
               <a
                 key={ii}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block border border-border p-4 rounded-lg hover:border-foreground/30 transition-colors group"
+                className="modern-card rounded-xl p-5 group block"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="font-medium text-foreground group-hover:underline">{item.title}</h3>
                     <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0 mt-1" />
+                  <ExternalLink className="w-4 h-4 text-muted-foreground shrink-0 mt-1 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
               </a>
             ))}
@@ -71,11 +71,10 @@ const Resources = () => {
         </div>
       ))}
 
-      <div className="border-t border-border pt-6 scroll-reveal">
-        <p className="text-xs text-muted-foreground">
-          External links are provided for informational purposes. AutismCare AI is not affiliated with these organizations.
-        </p>
-      </div>
+      <div className="section-divider w-full scroll-reveal" />
+      <p className="text-xs text-muted-foreground scroll-reveal">
+        External links are provided for informational purposes. Autivision is not affiliated with these organizations.
+      </p>
     </div>
   );
 };
