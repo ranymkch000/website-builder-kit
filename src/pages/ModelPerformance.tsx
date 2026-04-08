@@ -47,7 +47,7 @@ const ModelPerformance = () => {
       {/* Metrics grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 scroll-reveal">
         {metrics.map((m) => (
-          <div key={m.label} className="modern-card rounded-2xl p-6">
+          <div key={m.label} className="modern-card hover-lift rounded-2xl p-6">
             <p className="text-sm text-muted-foreground">{m.label}</p>
             <p className="text-3xl font-bold font-heading text-foreground mt-2">{m.value}</p>
             <p className="text-xs text-muted-foreground mt-1">{m.desc}</p>

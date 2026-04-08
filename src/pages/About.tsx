@@ -38,7 +38,7 @@ const About = () => {
             { step: "03", title: "AI Analysis", desc: "Our models analyze the image and generate a risk assessment with confidence scores." },
             { step: "04", title: "Clinical Review", desc: "Results are presented with contributing factors for professional interpretation." },
           ].map((item) => (
-            <div key={item.step} className="flex gap-5 items-start modern-card rounded-xl p-5">
+            <div key={item.step} className="flex gap-5 items-start modern-card hover-lift rounded-xl p-5">
               <span className="text-2xl font-heading text-muted-foreground/40 shrink-0">{item.step}</span>
               <div>
                 <h3 className="font-medium text-foreground">{item.title}</h3>
