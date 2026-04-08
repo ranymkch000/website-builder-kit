@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Brain, ShieldCheck, FileText, Activity, ArrowRight, Sparkles } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import RotatingBrain from "@/components/RotatingBrain";
+import brainImage from "@/assets/brain-3d.png";
 
 const features = [
   { icon: Brain, title: "AI-Powered Screening", desc: "Deep learning models analyze facial images for early ASD risk detection." },
@@ -24,7 +24,7 @@ const Landing = () => {
             <div className="space-y-8">
               <div className="animate-fade-in">
                 <p className="text-sm font-semibold text-primary tracking-widest uppercase mb-4">Clinical AI Platform</p>
-                <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight">
+                <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] tracking-tight">
                   Early Autism<br />
                   Screening,<br />
                   <span className="text-gradient">Powered by AI</span>
@@ -48,7 +48,16 @@ const Landing = () => {
               </p>
             </div>
             <div className="animate-scale-in opacity-0 [animation-delay:200ms]">
-              <RotatingBrain />
+              <div className="brain-hero-container">
+                <div className="brain-hero-glow" />
+                <img
+                  src={brainImage}
+                  alt="3D glass brain with glowing neural pathways"
+                  className="brain-hero-image"
+                  width={1024}
+                  height={1024}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -103,10 +112,9 @@ const Landing = () => {
       {/* Footer */}
       <footer className="py-10 border-t border-border/60">
         <div className="container mx-auto px-4 flex items-center justify-between text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <Brain className="w-4 h-4 text-primary" />
-            <span className="font-heading font-bold text-base text-foreground">Autivision</span>
-          </div>
+          <span className="font-heading font-bold text-base text-foreground tracking-tight">
+            <span className="text-primary">auti</span>vision
+          </span>
           <p className="text-xs">© 2026 — Decision support tool. Not a medical diagnosis.</p>
         </div>
       </footer>
