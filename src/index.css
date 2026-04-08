@@ -205,106 +205,37 @@
   }
 }
 
-/* Brain animation styles */
-.brain-container {
+/* Brain hero styles */
+.brain-hero-container {
   position: relative;
   width: 100%;
-  max-width: 480px;
-  aspect-ratio: 1;
+  max-width: 500px;
   margin: 0 auto;
 }
 
-.brain-glow {
+.brain-hero-glow {
   position: absolute;
-  inset: 15%;
+  inset: 10%;
   border-radius: 50%;
-  background: radial-gradient(circle, hsl(var(--brain-glow) / 0.15), hsl(var(--primary) / 0.08), transparent 70%);
+  background: radial-gradient(circle, hsl(var(--brain-glow) / 0.2), hsl(var(--primary) / 0.1), transparent 70%);
   animation: brain-pulse 4s ease-in-out infinite;
+  filter: blur(30px);
 }
 
-.brain-sphere {
-  position: absolute;
-  inset: 5%;
-  animation: brain-rotate 20s linear infinite;
-}
-
-.brain-svg {
+.brain-hero-image {
+  position: relative;
   width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.3));
+  height: auto;
+  animation: brain-float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 40px hsl(var(--brain-glow) / 0.2));
 }
 
-.brain-path {
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: brain-draw 3s ease-out forwards;
-}
-
-.brain-detail {
-  opacity: 0.6;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: brain-draw 2s ease-out 0.5s forwards;
-}
-
-.brain-node {
-  animation: node-pulse 3s ease-in-out infinite;
-}
-
-.brain-connection {
-  animation: connection-flow 2s ease-in-out infinite;
-}
-
-.brain-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid hsl(var(--primary) / 0.15);
-}
-
-.brain-ring-1 {
-  inset: 2%;
-  animation: ring-rotate 15s linear infinite;
-  border-style: dashed;
-}
-
-.brain-ring-2 {
-  inset: -3%;
-  animation: ring-rotate 25s linear infinite reverse;
-  border-color: hsl(var(--accent) / 0.1);
-}
-
-.brain-ring-3 {
-  inset: -8%;
-  animation: ring-rotate 35s linear infinite;
-  border-color: hsl(var(--brain-glow) / 0.08);
-  border-style: dotted;
-}
-
-@keyframes brain-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes brain-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.02); }
 }
 
 @keyframes brain-pulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-}
-
-@keyframes brain-draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes node-pulse {
-  0%, 100% { r: 3; opacity: 0.7; }
-  50% { r: 5; opacity: 1; }
-}
-
-@keyframes connection-flow {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.6; }
-}
-
-@keyframes ring-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
 }
