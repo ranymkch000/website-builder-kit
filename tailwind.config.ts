@@ -13,8 +13,8 @@ export default {
       },
     },
     fontFamily: {
-      heading: ['Poppins', 'sans-serif'],
-      body: ['Open Sans', 'sans-serif'],
+      heading: ['Space Grotesk', 'sans-serif'],
+      body: ['Inter', 'sans-serif'],
     },
     extend: {
       colors: {

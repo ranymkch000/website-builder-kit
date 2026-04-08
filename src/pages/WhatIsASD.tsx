@@ -30,7 +30,7 @@ const WhatIsASD = () => {
             { title: "Restricted Interests", desc: "Intense focus on specific topics, adherence to routines, or repetitive patterns of behavior." },
             { title: "Sensory Differences", desc: "Over- or under-sensitivity to sensory input such as sounds, textures, lights, or tastes." },
           ].map((item) => (
-            <div key={item.title} className="modern-card rounded-xl p-5 space-y-1">
+            <div key={item.title} className="modern-card hover-lift rounded-xl p-5 space-y-1">
               <h3 className="font-medium text-foreground">{item.title}</h3>
               <p className="text-sm text-muted-foreground">{item.desc}</p>
             </div>

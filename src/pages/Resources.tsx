@@ -56,7 +56,7 @@ const Resources = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="modern-card rounded-xl p-5 group block"
+                className="modern-card hover-lift rounded-xl p-5 group block"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>

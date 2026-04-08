@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Brain, ShieldCheck, FileText, Activity, ArrowRight, Sparkles } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import heroImage from "@/assets/hero-medical.jpg";
+import RotatingBrain from "@/components/RotatingBrain";
 
 const features = [
   { icon: Brain, title: "AI-Powered Screening", desc: "Deep learning models analyze facial images for early ASD risk detection." },
@@ -18,7 +18,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -35,12 +35,12 @@ const Landing = () => {
               </p>
               <div className="flex gap-3 pt-2 animate-fade-in opacity-0 [animation-delay:300ms]">
                 <Link to="/evaluation">
-                  <Button size="lg" className="gap-2 rounded-xl px-6 h-12 text-sm font-semibold">
+                  <Button size="lg" className="gap-2 rounded-xl px-6 h-12 text-sm font-semibold hover-glow">
                     Start Screening <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <Link to="/what-is-asd">
-                  <Button size="lg" variant="outline" className="rounded-xl px-6 h-12 text-sm font-semibold">Learn About ASD</Button>
+                  <Button size="lg" variant="outline" className="rounded-xl px-6 h-12 text-sm font-semibold hover-lift">Learn About ASD</Button>
                 </Link>
               </div>
               <p className="text-xs text-muted-foreground/60 animate-fade-in opacity-0 [animation-delay:400ms]">
@@ -48,16 +48,7 @@ const Landing = () => {
               </p>
             </div>
             <div className="animate-scale-in opacity-0 [animation-delay:200ms]">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl" />
-                <img
-                  src={heroImage}
-                  alt="AI-powered facial analysis for autism screening"
-                  className="relative w-full rounded-2xl border border-border shadow-lg"
-                  width={1280}
-                  height={720}
-                />
-              </div>
+              <RotatingBrain />
             </div>
           </div>
         </div>
@@ -77,7 +68,7 @@ const Landing = () => {
             {features.map((f, i) => (
               <div
                 key={i}
-                className="modern-card rounded-2xl p-6 space-y-4 scroll-reveal"
+                className="modern-card hover-lift rounded-2xl p-6 space-y-4 scroll-reveal"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
@@ -101,7 +92,7 @@ const Landing = () => {
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">Ready to Start Screening?</h2>
             <p className="text-muted-foreground text-lg">Upload an image and get an AI-powered ASD risk assessment in seconds.</p>
             <Link to="/evaluation">
-              <Button size="lg" className="gap-2 rounded-xl px-6 h-12 text-sm font-semibold mt-2">
+              <Button size="lg" className="gap-2 rounded-xl px-6 h-12 text-sm font-semibold mt-2 hover-glow">
                 Start Evaluation <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>

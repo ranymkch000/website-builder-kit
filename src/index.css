@@ -2,27 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 214 33% 97%;
-    --foreground: 210 30% 15%;
+    --background: 220 20% 97%;
+    --foreground: 220 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 30% 15%;
+    --card-foreground: 220 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 30% 15%;
+    --popover-foreground: 220 25% 12%;
 
-    --primary: 204 56% 38%;
+    --primary: 207 58% 36%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 214 33% 96%;
-    --secondary-foreground: 204 56% 38%;
+    --secondary: 220 20% 94%;
+    --secondary-foreground: 207 58% 36%;
 
-    --muted: 214 33% 96%;
-    --muted-foreground: 210 10% 46%;
+    --muted: 220 15% 93%;
+    --muted-foreground: 220 10% 46%;
 
     --accent: 263 100% 71%;
     --accent-foreground: 0 0% 100%;
@@ -30,36 +30,92 @@
     --destructive: 0 60% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 20% 90%;
-    --input: 214 20% 90%;
-    --ring: 204 56% 38%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 207 58% 36%;
 
     --radius: 0.75rem;
 
     --warning: 40 80% 50%;
     --warning-foreground: 0 0% 100%;
-    --success: 140 48% 55%;
+    --success: 145 50% 46%;
     --success-foreground: 0 0% 100%;
-    --risk-low: 140 48% 55%;
+    --risk-low: 145 50% 46%;
     --risk-moderate: 40 80% 50%;
     --risk-high: 0 60% 50%;
 
-    --sidebar-background: 204 56% 14%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 204 56% 60%;
+    --brain-glow: 0 85% 55%;
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 220 15% 85%;
+    --sidebar-primary: 207 58% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 204 56% 20%;
-    --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 204 40% 22%;
-    --sidebar-ring: 204 56% 38%;
+    --sidebar-accent: 207 58% 18%;
+    --sidebar-accent-foreground: 220 15% 85%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 207 58% 36%;
 
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
 
-    --shadow-sm: 0 1px 2px 0 hsl(204 56% 38% / 0.04);
-    --shadow-md: 0 4px 16px -2px hsl(204 56% 38% / 0.08);
-    --shadow-lg: 0 12px 40px -8px hsl(204 56% 38% / 0.1);
-    --shadow-card: 0 1px 3px 0 hsl(204 56% 38% / 0.05), 0 0 0 1px hsl(204 56% 38% / 0.03);
+    --shadow-sm: 0 1px 2px 0 hsl(220 25% 12% / 0.04);
+    --shadow-md: 0 4px 16px -2px hsl(220 25% 12% / 0.08);
+    --shadow-lg: 0 12px 40px -8px hsl(220 25% 12% / 0.12);
+    --shadow-card: 0 1px 3px 0 hsl(220 25% 12% / 0.04), 0 0 0 1px hsl(220 15% 88% / 0.6);
+  }
+
+  .dark {
+    --background: 225 25% 6%;
+    --foreground: 220 15% 90%;
+
+    --card: 225 22% 9%;
+    --card-foreground: 220 15% 90%;
+
+    --popover: 225 22% 9%;
+    --popover-foreground: 220 15% 90%;
+
+    --primary: 207 58% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 20% 14%;
+    --secondary-foreground: 207 58% 60%;
+
+    --muted: 225 18% 13%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 263 100% 71%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 15% 16%;
+    --input: 225 15% 16%;
+    --ring: 207 58% 50%;
+
+    --warning: 40 80% 50%;
+    --warning-foreground: 0 0% 100%;
+    --success: 145 50% 46%;
+    --success-foreground: 0 0% 100%;
+    --risk-low: 145 50% 46%;
+    --risk-moderate: 40 80% 50%;
+    --risk-high: 0 60% 50%;
+
+    --brain-glow: 0 85% 55%;
+
+    --sidebar-background: 225 25% 5%;
+    --sidebar-foreground: 220 15% 80%;
+    --sidebar-primary: 207 58% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 20% 12%;
+    --sidebar-accent-foreground: 220 15% 80%;
+    --sidebar-border: 225 15% 14%;
+    --sidebar-ring: 207 58% 50%;
+
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 16px -2px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 12px 40px -8px hsl(0 0% 0% / 0.5);
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.2), 0 0 0 1px hsl(225 15% 16% / 0.8);
   }
 }
 
@@ -70,6 +126,7 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -89,7 +146,7 @@
   }
 
   .glass {
-    background: hsl(0 0% 100% / 0.8);
+    background: hsl(var(--background) / 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
@@ -103,12 +160,12 @@
 
   .modern-card:hover {
     box-shadow: var(--shadow-md);
-    border-color: hsl(204 56% 38% / 0.2);
-    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.3);
+    transform: translateY(-3px);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, hsl(204 56% 38%), hsl(263 100% 71%));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -118,4 +175,136 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
   }
+
+  /* Hover glow for buttons */
+  .hover-glow {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .hover-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3));
+    z-index: -1;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.3s ease;
+  }
+  .hover-glow:hover::after {
+    opacity: 1;
+  }
+
+  /* Interactive card hover */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+/* Brain animation styles */
+.brain-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.brain-glow {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(var(--brain-glow) / 0.15), hsl(var(--primary) / 0.08), transparent 70%);
+  animation: brain-pulse 4s ease-in-out infinite;
+}
+
+.brain-sphere {
+  position: absolute;
+  inset: 5%;
+  animation: brain-rotate 20s linear infinite;
+}
+
+.brain-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.3));
+}
+
+.brain-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: brain-draw 3s ease-out forwards;
+}
+
+.brain-detail {
+  opacity: 0.6;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: brain-draw 2s ease-out 0.5s forwards;
+}
+
+.brain-node {
+  animation: node-pulse 3s ease-in-out infinite;
+}
+
+.brain-connection {
+  animation: connection-flow 2s ease-in-out infinite;
+}
+
+.brain-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--primary) / 0.15);
+}
+
+.brain-ring-1 {
+  inset: 2%;
+  animation: ring-rotate 15s linear infinite;
+  border-style: dashed;
+}
+
+.brain-ring-2 {
+  inset: -3%;
+  animation: ring-rotate 25s linear infinite reverse;
+  border-color: hsl(var(--accent) / 0.1);
+}
+
+.brain-ring-3 {
+  inset: -8%;
+  animation: ring-rotate 35s linear infinite;
+  border-color: hsl(var(--brain-glow) / 0.08);
+  border-style: dotted;
+}
+
+@keyframes brain-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes brain-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes brain-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes node-pulse {
+  0%, 100% { r: 3; opacity: 0.7; }
+  50% { r: 5; opacity: 1; }
+}
+
+@keyframes connection-flow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
