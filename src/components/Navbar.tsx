@@ -27,8 +27,8 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
         <Link to="/" className="flex items-center gap-1 group">
           <span className="font-heading text-2xl md:text-3xl font-bold tracking-tight transition-transform group-hover:scale-105">
-            <span className="text-primary">auti</span>
-            <span className="text-foreground">vision</span>
+            <span className="text-gradient font-extrabold italic">Auti</span>
+            <span className="text-foreground">Vision</span>
           </span>
         </Link>
 

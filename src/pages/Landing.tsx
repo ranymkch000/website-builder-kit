@@ -113,7 +113,7 @@ const Landing = () => {
       <footer className="py-10 border-t border-border/60">
         <div className="container mx-auto px-4 flex items-center justify-between text-sm text-muted-foreground">
           <span className="font-heading font-bold text-base text-foreground tracking-tight">
-            <span className="text-primary">auti</span>vision
+            <span className="text-gradient font-extrabold italic">Auti</span>Vision
           </span>
           <p className="text-xs">© 2026 — Decision support tool. Not a medical diagnosis.</p>
         </div>
