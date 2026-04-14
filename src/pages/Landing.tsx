@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Brain, ShieldCheck, FileText, Activity, ArrowRight, Sparkles } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import brainImage from "@/assets/brain-3d.png";
+import Brain3D from "@/components/Brain3D";
 
 const features = [
   { icon: Brain, title: "AI-Powered Screening", desc: "Deep learning models analyze facial images for early ASD risk detection." },
@@ -48,16 +48,7 @@ const Landing = () => {
               </p>
             </div>
             <div className="animate-scale-in opacity-0 [animation-delay:200ms]">
-              <div className="brain-hero-container">
-                <div className="brain-hero-glow" />
-                <img
-                  src={brainImage}
-                  alt="3D glass brain with glowing neural pathways"
-                  className="brain-hero-image"
-                  width={1024}
-                  height={1024}
-                />
-              </div>
+              <Brain3D />
             </div>
           </div>
         </div>
