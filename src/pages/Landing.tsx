@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Brain, ShieldCheck, FileText, Activity, ArrowRight, Sparkles } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import Brain3D from "@/components/Brain3D";
+import neuronsBg from "@/assets/neurons-bg.png";
 
 const features = [
   { icon: Brain, title: "AI-Powered Screening", desc: "Deep learning models analyze facial images for early ASD risk detection." },
