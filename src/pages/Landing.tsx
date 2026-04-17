@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Brain, ShieldCheck, FileText, Activity, ArrowRight, Sparkles } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import neuronsBg from "@/assets/neurons-bg.png";
+import Brain3D from "@/components/Brain3D";
 
 const features = [
   { icon: Brain, title: "AI-Powered Screening", desc: "Deep learning models analyze facial images for early ASD risk detection." },
@@ -25,7 +26,8 @@ const Landing = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl space-y-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
               <div className="animate-fade-in">
                 <p className="text-sm font-semibold text-primary tracking-widest uppercase mb-4">Clinical AI Platform</p>
                 <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] tracking-tight">
@@ -50,6 +52,10 @@ const Landing = () => {
               <p className="text-xs text-muted-foreground/60 animate-fade-in opacity-0 [animation-delay:400ms]">
                 Decision-support tool only — does not replace clinical diagnosis.
               </p>
+            </div>
+            <div className="animate-fade-in opacity-0 [animation-delay:200ms]">
+              <Brain3D />
+            </div>
           </div>
         </div>
       </section>
